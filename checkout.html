@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Her Essence Restored (H.E.R.)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf7f1;
+      color: #333;
+      padding: 2rem;
+    }
+
+    .checkout-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkout-container h2 {
+      margin-bottom: 1rem;
+    }
+
+    .checkout-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1rem;
+    }
+
+    .checkout-item img {
+      width: 80px;
+      height: 100px;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+
+    .item-details {
+      flex: 2;
+    }
+
+    .item-details h4 {
+      margin: 0;
+    }
+
+    .item-details p {
+      margin: 0.5rem 0;
+    }
+
+    .checkout-total {
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .billing-form {
+      margin-top: 2rem;
+    }
+
+    .billing-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .billing-form input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkout-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .checkout-actions button {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .back-to-cart {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .proceed-payment {
+      background-color: #b76e79;
+      color: white;
+    }
+
+    .proceed-payment:hover {
+      background-color: #a05c68;
+    }
+  </style>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <div id="checkoutItems"></div>
+    <div class="checkout-total" id="checkoutTotal">Total: $0.00</div>
+
+    <form class="billing-form" id="billingForm">
+      <h3>Billing Information</h3>
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" required>
+
+      <label for="zipCode">Zip Code</label>
+      <input type="text" id="zipCode" name="zipCode" required>
+
+      <label for="country">Country</label>
+      <input type="text" id="country" name="country" required>
+    </form>
+
+    <div class="checkout-actions">
+      <button class="back-to-cart" onclick="goBackToCart()">Back to Cart</button>
+      <button class="proceed-payment" onclick="processPayment()">Proceed to Payment</button>
+    </div>
+  </div>
+
+  <script>
+    const checkoutItemsContainer = document.getElementById('checkoutItems');
+    const checkoutTotal = document.getElementById('checkoutTotal');
+
+    // Retrieve cart data from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const exchangeRates = {
+      AOA: 800,
+      NAD: 18,
+      ZAR: 18
+    };
+
+    const selectedCurrency = localStorage.getItem('selectedCurrency') || 'NAD';
+
+    function renderCheckout() {
+      checkoutItemsContainer.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        checkoutItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        checkoutTotal.textContent = 'Total: $0.00';
+        return;
+      }
+
+      cart.forEach(item => {
+        const product = JSON.parse(localStorage.getItem('productsData')).find(p => p.id === item.id);
+        if (!product) return;
+
+        const priceInSelectedCurrency = (product.price * exchangeRates[selectedCurrency]).toFixed(2);
+        const itemTotal = priceInSelectedCurrency * item.quantity;
+        total += itemTotal;
+
+        const checkoutItem = document.createElement('div');
+        checkoutItem.classList.add('checkout-item');
+
+        checkoutItem.innerHTML = `
+          <div class="item-details">
+            <img src="${product.image}" alt="${product.name}">
+            <div>
+              <h4>${product.name}</h4>
+              <p>Size: ${item.size}</p>
+              <p>Color: ${item.color}</p>
+              <p>Price: ${priceInSelectedCurrency} ${selectedCurrency}</p>
+              <p>Quantity: ${item.quantity}</p>
+            </div>
+          </div>
+        `;
+
+        checkoutItemsContainer.appendChild(checkoutItem);
+      });
+
+      checkoutTotal.textContent = `Total: ${total.toFixed(2)} ${selectedCurrency}`;
+    }
+
+    function goBackToCart() {
+      window.location.href = 'cart.html';
+    }
+
+    async function processPayment() {
+      const billingForm = document.getElementById('billingForm');
+      if (!billingForm.checkValidity()) {
+        alert('Please fill out all billing information.');
+        return;
+      }
+
+      // Collect billing information
+      const billingInfo = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        zipCode: document.getElementById('zipCode').value,
+        country: document.getElementById('country').value,
+      };
+
+      // Collect cart details
+      const cartDetails = {
+        items: cart,
+        total: checkoutTotal.textContent,
+        currency: selectedCurrency,
+      };
+
+      // Send data to your server to create a Stripe Checkout Session
+      try {
+        const response = await fetch('/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ billingInfo, cartDetails }),
+        });
+
+        const session = await response.json();
+
+        if (session.error) {
+          alert('Error creating payment session: ' + session.error);
+          return;
+        }
+
+        // Redirect to Stripe Checkout
+        const stripe = Stripe('your-publishable-key-here'); // Replace with your Stripe publishable key
+        await stripe.redirectToCheckout({ sessionId: session.id });
+      } catch (error) {
+        console.error('Error processing payment:', error);
+        alert('An error occurred while processing your payment.');
+      }
+    }
+
+    renderCheckout();
+  </script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Her Essence Restored (H.E.R.)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #fdf7f1;
+      color: #333;
+    }
+
+    header {
+      background: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #b76e79;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-height: 400px;
+      overflow: hidden;
+    }
+
+    .carousel-images {
+      display: flex;
+      width: 300%;
+      animation: slide 12s infinite;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0%); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
+
+    .shop {
+      padding: 2rem;
+    }
+
+    .filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .filters button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #b76e79;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product h4 {
+      margin: 0.5rem 0 0.3rem;
+    }
+
+    .product p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    footer {
+      background: #222;
+      color: #eee;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+      margin: 1rem;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-col a {
+      display: block;
+      margin: 0.3rem 0;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .newsletter input {
+      padding: 0.5rem;
+      width: 70%;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .newsletter button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #b76e79;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Her Essence Restored (H.E.R.)</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <select id="languageSelector" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+      <option value="af">Afrikaans</option>
+    </select>
+  </header>
+
+  <!-- Carousel -->
+  <section class="carousel">
+    <div class="carousel-images">
+      <img src="https://i.pinimg.com/736x/fa/b0/04/fab0048557cd7823baa2e090dfecf675.jpg" alt="Vintage Carousel with Fashion Model">
+      <img src="https://img.freepik.com/free-photo/young-woman-riding-carousel-horse_23-2148321234.jpg" alt="Elegant Woman on Carousel Horse">
+      <img src="https://img.freepik.com/free-photo/attractive-stylish-blonde-woman-jeans-oversize-jacket-walking-against-wall-street_285396-8031.jpg" alt="Chic Lady in Front of Carousel">
+    </div>
+  </section>  
+
+  <!-- Shop Section -->
+  <section class="shop">
+    <h2 style="margin-bottom: 1rem;">Shop Our Collections</h2>
+    <div class="filters">
+        <button onclick="filterProducts('all')">All</button>
+        <button onclick="filterProducts('vintage')">Vintage</button>
+        <button onclick="filterProducts('modern')">Modern</button>
+        <button onclick="filterProducts('african')">African</button>
+        <button onclick="filterProducts('wigs')">Wigs</button> <!-- New Wigs button -->
+      </div>
+      
+      <div class="product-grid" id="productGrid">
+        <!-- Vintage -->
+        <div class="product" data-category="vintage">
+          <img src="https://i.pinimg.com/originals/6f/aa/61/6faa61ce8e5c45c2051cb04a32fc216c.jpg" alt="Vintage Dress">
+          <h4>Classic Vintage Dress</h4>
+          <p>65,000 AOA | 1,500 NAD | 1,600 ZAR</p>
+        </div>
+        <div class="product" data-category="vintage">
+          <img src="https://i.pinimg.com/originals/76/14/57/7614577f92cfb1463e09d77db4dbf222.jpg" alt="Vintage Hat">
+          <h4>Vintage Hat</h4>
+          <p>25,000 AOA | 600 NAD | 650 ZAR</p>
+        </div>
+        <div class="product" data-category="vintage">
+          <img src="https://i.pinimg.com/originals/3a/1c/3c/3a1c3c8447c340efcb5413659f637ac0.jpg" alt="Vintage Trench Coat">
+          <h4>Vintage Trench Coat</h4>
+          <p>82,000 AOA | 2,000 NAD | 2,100 ZAR</p>
+        </div>
+      
+        <!-- Modern -->
+        <div class="product" data-category="modern">
+          <img src="https://img.freepik.com/free-photo/fashion-portrait-young-elegant-woman_1328-2702.jpg" alt="Modern Blazer">
+          <h4>Modern Blazer</h4>
+          <p>90,000 AOA | 2,200 NAD | 2,300 ZAR</p>
+        </div>
+        <div class="product" data-category="modern">
+          <img src="https://img.freepik.com/free-photo/pair-trendy-sneakers_23-2149439237.jpg" alt="Modern Sneakers">
+          <h4>Modern Sneakers</h4>
+          <p>74,000 AOA | 1,800 NAD | 1,900 ZAR</p>
+        </div>
+        <div class="product" data-category="modern">
+          <img src="https://img.freepik.com/free-photo/stylish-handbag-isolated_23-2149439248.jpg" alt="Modern Handbag">
+          <h4>Modern Handbag</h4>
+          <p>57,000 AOA | 1,400 NAD | 1,500 ZAR</p>
+        </div>
+      
+        <!-- African -->
+        <div class="product" data-category="african">
+          <img src="https://i.pinimg.com/originals/c1/b2/60/c1b26073812fd829d7a0ad7cf5b6e8bb.jpg" alt="African Print Wrap">
+          <h4>African Print Wrap</h4>
+          <p>49,000 AOA | 1,200 NAD | 1,300 ZAR</p>
+        </div>
+        <div class="product" data-category="african">
+          <img src="https://i.pinimg.com/originals/9d/90/90/9d9090d52897f0ab2e3ce8e6e8c8b38c.jpg" alt="African Beaded Necklace">
+          <h4>Beaded Necklace</h4>
+          <p>33,000 AOA | 800 NAD | 850 ZAR</p>
+        </div>
+        <div class="product" data-category="african">
+          <img src="https://i.pinimg.com/originals/c4/ba/b3/c4bab388fe0aa742c34ef8c1745a3d66.jpg" alt="African Print Dress">
+          <h4>Bold Print Dress</h4>
+          <p>74,000 AOA | 1,800 NAD | 1,900 ZAR</p>
+        </div>
+
+        <!-- Wigs -->
+        <div class="product" data-category="wigs">
+          <img src="https://example.com/wig1.jpg" alt="Curly Wig">
+          <h4>Curly Wig</h4>
+          <p>40,000 AOA | 1,000 NAD | 1,100 ZAR</p>
+        </div>
+        <div class="product" data-category="wigs">
+          <img src="https://example.com/wig2.jpg" alt="Straight Wig">
+          <h4>Straight Wig</h4>
+          <p>50,000 AOA | 1,200 NAD | 1,300 ZAR</p>
+        </div>
+        <div class="product" data-category="wigs">
+          <img src="https://example.com/wig3.jpg" alt="Braided Wig">
+          <h4>Braided Wig</h4>
+          <p>60,000 AOA | 1,400 NAD | 1,500 ZAR</p>
+        </div>
+      </div>
+      
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>About Us</h4>
+        <p>Her Essence Restored (H.E.R.) brings timeless elegance to modern fashion. Discover curated styles from across the decades.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.instagram.com" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
+          </svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
+          </svg>
+          Facebook
+        </a>
+        <a href="https://www.pinterest.com" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
+          </svg>
+          Pinterest
+        </a>
+        <a href="https://www.tiktok.com" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
+          </svg>
+          TikTok
+        </a>
+      </div>
+      
+      <div class="footer-col newsletter">
+        <h4>Newsletter</h4>
+        <p>Sign up for exclusive updates:</p>
+        <input type="email" placeholder="Your email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    function filterProducts(category) {
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        if (category === 'all' || product.dataset.category === category) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+  </script>
+  <script>
+  const translations = {
+    en: {
+      home: "Home",
+      products: "Products",
+      about: "About",
+      contact: "Contact",
+      shopCollections: "Shop Our Collections",
+      all: "All",
+      vintage: "Vintage",
+      modern: "Modern",
+      african: "African",
+      wigs: "Wigs", // New translation
+      aboutUs: "About Us",
+      followUs: "Follow Us",
+      newsletter: "Newsletter",
+      signUp: "Sign up for exclusive updates:",
+      subscribe: "Subscribe",
+      footer: "&copy; 2025 Her Essence Restored (H.E.R.). All rights reserved."
+    },
+    pt: {
+      home: "Início",
+      products: "Produtos",
+      about: "Sobre",
+      contact: "Contato",
+      shopCollections: "Compre Nossas Coleções",
+      all: "Todos",
+      vintage: "Vintage",
+      modern: "Moderno",
+      african: "Africano",
+      wigs: "Perucas", // New translation
+      aboutUs: "Sobre Nós",
+      followUs: "Siga-nos",
+      newsletter: "Boletim Informativo",
+      signUp: "Inscreva-se para atualizações exclusivas:",
+      subscribe: "Inscrever-se",
+      footer: "&copy; 2025 Her Essence Restored (H.E.R.). Todos os direitos reservados."
+    },
+    af: {
+      home: "Tuis",
+      products: "Produkte",
+      about: "Oor",
+      contact: "Kontak",
+      shopCollections: "Koop Ons Versamelings",
+      all: "Alle",
+      vintage: "Vintage",
+      modern: "Modern",
+      african: "Afrikaans",
+      wigs: "Pruike", // New translation
+      aboutUs: "Oor Ons",
+      followUs: "Volg Ons",
+      newsletter: "Nuusbrief",
+      signUp: "Teken in vir eksklusiewe opdaterings:",
+      subscribe: "Inskryf",
+      footer: "&copy; 2025 Her Essence Restored (H.E.R.). Alle regte voorbehou."
+    }
+  };
+
+  function changeLanguage(language) {
+    document.querySelector('nav a[href="index.html"]').textContent = translations[language].home;
+    document.querySelector('nav a[href="products.html"]').textContent = translations[language].products;
+    document.querySelector('nav a[href="about.html"]').textContent = translations[language].about;
+    document.querySelector('nav a[href="contact.html"]').textContent = translations[language].contact;
+    document.querySelector('.shop h2').textContent = translations[language].shopCollections;
+    document.querySelector('.filters button:nth-child(1)').textContent = translations[language].all;
+    document.querySelector('.filters button:nth-child(2)').textContent = translations[language].vintage;
+    document.querySelector('.filters button:nth-child(3)').textContent = translations[language].modern;
+    document.querySelector('.filters button:nth-child(4)').textContent = translations[language].african;
+    document.querySelector('.filters button:nth-child(5)').textContent = translations[language].wigs; // Update Wigs button text
+    document.querySelector('.footer-col h4').textContent = translations[language].aboutUs;
+    document.querySelector('.footer-col.newsletter h4').textContent = translations[language].newsletter;
+    document.querySelector('.footer-col.newsletter p').textContent = translations[language].signUp;
+    document.querySelector('.footer-col.newsletter button').textContent = translations[language].subscribe;
+    document.querySelector('.footer-bottom').innerHTML = translations[language].footer;
+  }
+</script>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
+</svg>
+</body>
+</html>
