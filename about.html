@@ -1,282 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - Her Essence Restored (H.E.R.)</title>
-  <style>
-    /* General Styling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    body {
-      background-color: #fff9f5;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    /* Header Styling */
-    header {
-      background: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #b76e79;
-      display: flex;
-      align-items: center;
-    }
-    .logo span {
-      margin-left: 0.5rem;
-    }
-    nav a {
-      margin: 0 1rem;
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .language-selector button {
-      background-color: #b76e79;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    /* About Section Styling */
-    .about-section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .about-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #b76e79;
-      text-align: center;
-    }
-    .about-section p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      text-align: justify;
-    }
-
-    /* Section-Specific Styling */
-    #about-section .content {
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: #fdf1f2;
-      border-left: 5px solid #b76e79;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    #about-section .content h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #b76e79;
-    }
-
-    /* Footer Styling */
-    footer {
-      background: #222;
-      color: #eee;
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .footer-col {
-      flex: 1;
-      min-width: 200px;
-      margin: 1rem;
-    }
-    .footer-col h4 {
-      margin-bottom: 1rem;
-      color: #b76e79;
-    }
-    .footer-col a {
-      display: block;
-      margin: 0.3rem 0;
-      color: #ccc;
-      text-decoration: none;
-    }
-    .newsletter input {
-      padding: 0.5rem;
-      width: 70%;
-      margin-right: 0.5rem;
-      border: none;
-      border-radius: 5px;
-    }
-    .newsletter button {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: #b76e79;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .footer-bottom {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .about-section {
-        padding: 2rem 1rem;
-      }
-      .footer-content {
-        flex-direction: column;
-        align-items: center;
-      }
-      .footer-col {
-        margin: 1rem 0;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Charlotte's Heavenly Delights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffefd5, #ffe4e1);
+        }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        nav a:hover {
+            text-decoration: underline;
+            color: #ff6f61;
+            background-color: #ffe4e1;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .about-section {
+            padding: 20px;
+            text-align: center;
+        }
+        .about-section h2 {
+            font-size: 28px;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+        .about-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .team-member {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .team-member h3 {
+            margin: 10px 0 5px;
+            font-size: 20px;
+        }
+        .team-member p {
+            font-size: 14px;
+            color: #666;
+        }
+        footer {
+            background-color: #1a1a1a; /* Darker shade for better contrast */
+            color: #ffefd5; /* Light color for text to pop */
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        .social-links a i {
+            margin-right: 5px;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-
-<header>
-  <div class="logo">
-    <img src="logo.png" alt="H.E.R. Logo" style="height: 40px;" />
-    <span>Her Essence Restored (H.E.R.)</span>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="cart.html">Cart</a>
-  </nav>
-  <div class="language-selector">
-    <select id="language-dropdown" onchange="changeLanguage(this.value)">
-      <option value="en">English</option>
-      <option value="pt">Português</option>
-      <option value="af">Afrikaans</option>
-    </select>
-  </div>
-</header>
-
-<section class="about-section" id="about-section">
-  <!-- About Us Section -->
-  <div class="content" id="content-en">
-    <h1>About Us</h1>
-    <p>
-      Born from a deep desire to honor God and restore the beauty of true feminity, Her Essence Restored (H.E.R.) was created to inspire women to embrace modesty, confidence, and purpose.
-      In a world that often distorts the meaning of womanhood, H.E.R exists to bring it back to its essence - soft, strong, and sacred.
-      Each piece is thoughtfully designed to reflect grace and dignity, proving that modesty is not about hiding - it's about revealing who you truly are without compromise.
-      Whether it's a flowing dress, a timeless silhouette, or a soft everyday piece, our clothing is made for the woman who walks in faith, lives with intension, and dresses with meaning.
-      This is more than fashion.
-      This is restoration.
-      This is H.E.R.
-    </p>
-  </div>
-
-  <!-- Bio Section -->
-  <div class="content" id="bio-section">
-    <h1>Our Bio</h1>
-    <p>
-      Founded in 2025, Her Essence Restored (H.E.R.) was born out of a passion for empowering women through fashion. Our founder, a visionary designer with roots in Southern Africa, sought to create a brand that bridges the gap between tradition and modernity. 
-      With a deep appreciation for the diverse cultures of Namibia, Angola, and South Africa, H.E.R. has become a symbol of elegance, resilience, and individuality.
-    </p>
-    <p>
-      Each piece in our collection is thoughtfully designed to reflect the unique stories of the women who inspire us. From the vibrant streets of Luanda to the serene landscapes of Windhoek, our designs are a tribute to the beauty and strength of African women.
-    </p>
-  </div>
-
-  <!-- Goal Section -->
-  <div class="content" id="goal-section">
-    <h1>Our Goal</h1>
-    <p>
-      At Her Essence Restored (H.E.R.), our goal is to redefine fashion by creating pieces that empower women to embrace their heritage while expressing their individuality. 
-      We aim to provide a platform for women to feel confident, connected, and celebrated in every aspect of their lives.
-    </p>
-    <p>
-      Through sustainable practices and ethical sourcing, we strive to make a positive impact on the communities we serve. Our commitment to quality and authenticity ensures that every garment tells a story of empowerment and pride.
-    </p>
-  </div>
-
-  <!-- Vision Section -->
-  <div class="content" id="vision-section">
-    <h1>Our Vision</h1>
-    <p>
-      Our vision is to become a global leader in fashion that celebrates diversity and inclusivity. We envision a world where women from all walks of life can find their voice and express their unique identity through our designs.
-    </p>
-    <p>
-      By blending traditional African aesthetics with contemporary trends, we aim to inspire a new generation of women to embrace their roots while looking toward the future. 
-      Together, we can create a legacy of empowerment, creativity, and timeless elegance.
-    </p>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-content">
-    <div class="footer-col">
-      <h4>About Us</h4>
-      <p>Her Essence Restored (H.E.R.) blends African tradition with modern flair for today's empowered woman.</p>
-    </div>
-    <div class="footer-col">
-  <h4>Follow Us</h4>
-  <a href="https://www.instagram.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
-    </svg>
-    Instagram
-  </a>
-  <a href="https://www.facebook.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
-    </svg>
-    Facebook
-  </a>
-  <a href="https://www.pinterest.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
-    </svg>
-    Pinterest
-  </a>
-  <a href="https://www.tiktok.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
-    </svg>
-    TikTok
-  </a>
-</div>
-    <div class="footer-col newsletter">
-      <h4>Newsletter</h4>
-      <p>Sign up for style drops and special offers:</p>
-      <input type="email" placeholder="Your email" />
-      <button>Subscribe</button>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
-  </div>
-</footer>
-
-<script>
-  function changeLanguage(lang) {
-    document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
-    document.getElementById('content-pt').style.display = lang === 'pt' ? 'block' : 'none';
-    document.getElementById('content-af').style.display = lang === 'af' ? 'block' : 'none';
-  }
-</script>
-
+    <header>
+        <h1>About Us</h1>
+    </header>
+    <nav>
+        <a href="index.html" class="home-link">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+    <section class="about-section">
+        <h2>Welcome to Charlotte's Heavenly Delights</h2>
+        <p>
+            Charlotte's Heavenly Delights, is a take away service who aims on bringing the most delicious
+            meals to the comfort of your home. We're merely a call away. We emphasize on Catering, Platters and Take away services.
+        </p>
+        <p>
+            Whether you're craving a hearty meal or a light snack, our menu is crafted to satisfy every palate. 
+            Thank you for choosing us to be a part of your dining experience!
+        </p>
+    </section>
+    <section class="team">
+        <div class="team-member">
+        <div class="team-member">
+            <img src="https://via.placeholder.com/100" alt="Team Member">
+            <h3>Naomi Bonzali</h3>
+            <p>Founder & Head Chef</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2023 Charlotte's Heavenly Delights. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i>📘</i>Facebook</a>
+            <a href="https://twitter.com" target="_blank"><i>🐦</i>Twitter</a>
+            <a href="https://www.instagram.com/charlottes_heavenly_delights" target="_blank"><i>📸</i>Instagram</a>
+        </div>
+    </footer>
 </body>
 </html>

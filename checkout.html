@@ -1,252 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - Her Essence Restored (H.E.R.)</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdf7f1;
-      color: #333;
-      padding: 2rem;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Charlotte's Heavenly Delights</title>
+    <style>
+        /* Modern font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-    .checkout-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .checkout-container h2 {
-      margin-bottom: 1rem;
-    }
-
-    .checkout-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 1rem;
-    }
-
-    .checkout-item img {
-      width: 80px;
-      height: 100px;
-      object-fit: cover;
-      margin-right: 1rem;
-    }
-
-    .item-details {
-      flex: 2;
-    }
-
-    .item-details h4 {
-      margin: 0;
-    }
-
-    .item-details p {
-      margin: 0.5rem 0;
-    }
-
-    .checkout-total {
-      text-align: right;
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-
-    .billing-form {
-      margin-top: 2rem;
-    }
-
-    .billing-form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-
-    .billing-form input {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .checkout-actions {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
-    }
-
-    .checkout-actions button {
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .back-to-cart {
-      background-color: #ccc;
-      color: #333;
-    }
-
-    .proceed-payment {
-      background-color: #b76e79;
-      color: white;
-    }
-
-    .proceed-payment:hover {
-      background-color: #a05c68;
-    }
-  </style>
-  <script src="https://js.stripe.com/v3/"></script>
-</head>
-<body>
-  <div class="checkout-container">
-    <h2>Checkout</h2>
-    <div id="checkoutItems"></div>
-    <div class="checkout-total" id="checkoutTotal">Total: $0.00</div>
-
-    <form class="billing-form" id="billingForm">
-      <h3>Billing Information</h3>
-      <label for="fullName">Full Name</label>
-      <input type="text" id="fullName" name="fullName" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="address">Address</label>
-      <input type="text" id="address" name="address" required>
-
-      <label for="city">City</label>
-      <input type="text" id="city" name="city" required>
-
-      <label for="zipCode">Zip Code</label>
-      <input type="text" id="zipCode" name="zipCode" required>
-
-      <label for="country">Country</label>
-      <input type="text" id="country" name="country" required>
-    </form>
-
-    <div class="checkout-actions">
-      <button class="back-to-cart" onclick="goBackToCart()">Back to Cart</button>
-      <button class="proceed-payment" onclick="processPayment()">Proceed to Payment</button>
-    </div>
-  </div>
-
-  <script>
-    const checkoutItemsContainer = document.getElementById('checkoutItems');
-    const checkoutTotal = document.getElementById('checkoutTotal');
-
-    // Retrieve cart data from localStorage
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const exchangeRates = {
-      AOA: 800,
-      NAD: 18,
-      ZAR: 18
-    };
-
-    const selectedCurrency = localStorage.getItem('selectedCurrency') || 'NAD';
-
-    function renderCheckout() {
-      checkoutItemsContainer.innerHTML = '';
-      let total = 0;
-
-      if (cart.length === 0) {
-        checkoutItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
-        checkoutTotal.textContent = 'Total: $0.00';
-        return;
-      }
-
-      cart.forEach(item => {
-        const product = JSON.parse(localStorage.getItem('productsData')).find(p => p.id === item.id);
-        if (!product) return;
-
-        const priceInSelectedCurrency = (product.price * exchangeRates[selectedCurrency]).toFixed(2);
-        const itemTotal = priceInSelectedCurrency * item.quantity;
-        total += itemTotal;
-
-        const checkoutItem = document.createElement('div');
-        checkoutItem.classList.add('checkout-item');
-
-        checkoutItem.innerHTML = `
-          <div class="item-details">
-            <img src="${product.image}" alt="${product.name}">
-            <div>
-              <h4>${product.name}</h4>
-              <p>Size: ${item.size}</p>
-              <p>Color: ${item.color}</p>
-              <p>Price: ${priceInSelectedCurrency} ${selectedCurrency}</p>
-              <p>Quantity: ${item.quantity}</p>
-            </div>
-          </div>
-        `;
-
-        checkoutItemsContainer.appendChild(checkoutItem);
-      });
-
-      checkoutTotal.textContent = `Total: ${total.toFixed(2)} ${selectedCurrency}`;
-    }
-
-    function goBackToCart() {
-      window.location.href = 'cart.html';
-    }
-
-    async function processPayment() {
-      const billingForm = document.getElementById('billingForm');
-      if (!billingForm.checkValidity()) {
-        alert('Please fill out all billing information.');
-        return;
-      }
-
-      // Collect billing information
-      const billingInfo = {
-        fullName: document.getElementById('fullName').value,
-        email: document.getElementById('email').value,
-        address: document.getElementById('address').value,
-        city: document.getElementById('city').value,
-        zipCode: document.getElementById('zipCode').value,
-        country: document.getElementById('country').value,
-      };
-
-      // Collect cart details
-      const cartDetails = {
-        items: cart,
-        total: checkoutTotal.textContent,
-        currency: selectedCurrency,
-      };
-
-      // Send data to your server to create a Stripe Checkout Session
-      try {
-        const response = await fetch('/create-checkout-session', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ billingInfo, cartDetails }),
-        });
-
-        const session = await response.json();
-
-        if (session.error) {
-          alert('Error creating payment session: ' + session.error);
-          return;
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffe4e1, #ffefd5);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        // Redirect to Stripe Checkout
-        const stripe = Stripe('your-publishable-key-here'); // Replace with your Stripe publishable key
-        await stripe.redirectToCheckout({ sessionId: session.id });
-      } catch (error) {
-        console.error('Error processing payment:', error);
-        alert('An error occurred while processing your payment.');
-      }
-    }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    renderCheckout();
-  </script>
+        .cart-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 14px;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+        }
+        .checkout-section {
+            padding: 20px;
+            text-align: center;
+        }
+        .checkout-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .checkout-section li {
+            margin: 10px 0;
+        }
+        .checkout-section button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .checkout-section button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .cancel-button {
+            background-color: #f44336;
+        }
+        .cancel-button:hover {
+            background-color: #d32f2f;
+        }
+        .back-button {
+            background-color: #ff6f61;
+        }
+        .back-button:hover {
+            background-color: #e65b50;
+        }
+        .checkout-section button i {
+            margin-right: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto; /* Ensure footer stays at the bottom */
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+        .social-links a img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            height: 50px;
+        }
+        .header-container {
+            position: relative;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #e65b50;
+        }
+        .loading-spinner {
+            display: none;
+            margin: 20px auto;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .checkout-section button {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+        #delivery-details input {
+            width: 60%; /* Make the input bar smaller */
+            padding: 8px;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto; /* Center the input bar */
+            text-align: center; /* Center the text inside the input */
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header-container">
+        <h1>Checkout</h1>
+        <div class="cart-icon">
+            🛒 <span id="cart-count" class="cart-count">0</span>
+        </div>
+    </header>
+
+    <section class="checkout-section">
+        <h2>Your Order</h2>
+        <ul id="checkout-items"></ul>
+        <p id="total-price"></p>
+        <button class="cancel-button" onclick="cancelOrder()">
+            <i class="fas fa-times"></i> Cancel Order
+        </button>
+        <button class="back-button" onclick="goBackToMenu()">
+            <i class="fas fa-arrow-left"></i> Back to Menu
+        </button>
+        <button onclick="clearCart()">
+            <i class="fas fa-trash"></i> Clear Cart
+        </button>
+        <button onclick="redirectToPayment()">Complete Payment</button>
+        <div class="loading-spinner" id="loading-spinner" aria-hidden="true"></div>
+        <h3>Choose Order Type</h3>
+        <label>
+            <input type="radio" name="order-type" value="takeaway" checked> Take Away
+        </label>
+        <label>
+            <input type="radio" name="order-type" value="delivery"> Delivery
+        </label>
+        <div id="delivery-details" style="display: none; margin-top: 10px;">
+            <input type="text" id="delivery-address" placeholder="Enter delivery address" style="width: 100%; padding: 8px;">
+        </div>
+        <button onclick="sendOrderDetails()">
+            <i class="fas fa-envelope"></i> Send Order Details
+        </button>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Charlotte's Heavenly Delights. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="https://www.instagram.com/charlottes_heavenly_delights?igsh=cjc4Mjk3OGNlbmd4" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCart() {
+            const checkoutItems = document.getElementById('checkout-items');
+            const totalPrice = document.getElementById('total-price');
+            const cartCount = document.getElementById('cart-count');
+            checkoutItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(({ item, price, quantity }, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${item} - N$${price.toFixed(2)} x 
+                    <input type="number" class="quantity-input" value="${quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                    = N$${(price * quantity).toFixed(2)}
+                `;
+                checkoutItems.appendChild(li);
+                total += price * quantity;
+            });
+
+            totalPrice.textContent = `Total: N$${total.toFixed(2)}`;
+            cartCount.textContent = cart.length;
+        }
+
+        function updateQuantity(index, newQuantity) {
+            cart[index].quantity = parseInt(newQuantity, 10);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function redirectToPayment() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            document.getElementById('loading-spinner').style.display = 'block';
+            setTimeout(() => {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                window.location.href = 'payment.html';
+            }, 1000);
+        }
+
+        function cancelOrder() {
+            if (confirm('Are you sure you want to cancel your order?')) {
+                localStorage.removeItem('cart');
+                window.location.href = 'index.html';
+            }
+        }
+
+        function goBackToMenu() {
+            window.location.href = 'index.html';
+        }
+
+        function clearCart() {
+            if (confirm('Are you sure you want to clear the cart?')) {
+                localStorage.removeItem('cart');
+                window.location.reload();
+            }
+        }
+
+        document.querySelectorAll('input[name="order-type"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const deliveryDetails = document.getElementById('delivery-details');
+                if (radio.value === 'delivery') {
+                    deliveryDetails.style.display = 'block';
+                } else {
+                    deliveryDetails.style.display = 'none';
+                }
+            });
+        });
+
+        function sendOrderDetails() {
+            const orderType = document.querySelector('input[name="order-type"]:checked').value;
+            const deliveryAddress = document.getElementById('delivery-address').value;
+            const userEmail = prompt('Please enter your email address for confirmation:');
+            if (!userEmail || !userEmail.trim()) {
+                alert('Email address is required for confirmation.');
+                return;
+            }
+
+            const emailBody = `
+                Order Type: ${orderType}
+                ${orderType === 'delivery' ? `Delivery Address: ${deliveryAddress}` : ''}
+                Items: ${cart.map(({ item, price, quantity }) => `${item} x${quantity} (N$${price.toFixed(2)})`).join(', ')}
+                Total: N$${cart.reduce((total, { price, quantity }) => total + price * quantity, 0).toFixed(2)}
+            `;
+
+            if (orderType === 'delivery' && !deliveryAddress.trim()) {
+                alert('Please enter a delivery address.');
+                return;
+            }
+
+            // Simulate sending emails
+            console.log('Sending to website email...');
+            console.log('Email Body:', emailBody);
+
+            console.log('Sending confirmation to user email...');
+            console.log(`To: ${userEmail}`);
+            console.log('Email Body:', emailBody);
+
+            alert('Order details have been sent to the website email and a confirmation has been sent to your email!');
+        }
+
+        displayCart();
+    </script>
 </body>
 </html>

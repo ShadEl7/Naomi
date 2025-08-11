@@ -1,425 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Her Essence Restored (H.E.R.)</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background-color: #fdf7f1;
-      color: #333;
-    }
-
-    header {
-      background: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #b76e79;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .carousel {
-      position: relative;
-      width: 100%;
-      max-height: 400px;
-      overflow: hidden;
-    }
-
-    .carousel-images {
-      display: flex;
-      width: 300%;
-      animation: slide 12s infinite;
-    }
-
-    .carousel img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-
-    @keyframes slide {
-      0% { transform: translateX(0%); }
-      33% { transform: translateX(-100%); }
-      66% { transform: translateX(-200%); }
-      100% { transform: translateX(0%); }
-    }
-
-    .shop {
-      padding: 2rem;
-    }
-
-    .filters {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .filters button {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: #b76e79;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .product {
-      background: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-    }
-
-    .product:hover {
-      transform: scale(1.03);
-    }
-
-    .product img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .product h4 {
-      margin: 0.5rem 0 0.3rem;
-    }
-
-    .product p {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    footer {
-      background: #222;
-      color: #eee;
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .footer-col {
-      flex: 1;
-      min-width: 200px;
-      margin: 1rem;
-    }
-
-    .footer-col h4 {
-      margin-bottom: 1rem;
-    }
-
-    .footer-col a {
-      display: block;
-      margin: 0.3rem 0;
-      color: #ccc;
-      text-decoration: none;
-    }
-
-    .newsletter input {
-      padding: 0.5rem;
-      width: 70%;
-      margin-right: 0.5rem;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .newsletter button {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: #b76e79;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlotte's Heavenly Delights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffefd5, #ffe4e1);
+        }
+        header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x300');
+            background-size: cover;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            color: #ffefd5; /* Light color for better visibility */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for contrast */
+        }
+        header p {
+            color: #ffefd5; /* Light color for better visibility */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add shadow for contrast */
+        }
+        .cart-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 14px;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+        }
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .menu-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s, color 0.5s, box-shadow 0.5s; /* Smooth transition for menu items */
+        }
+        .menu-item:hover {
+            background-color: #ffe4e1; /* Light pink background on hover */
+            color: #ff6f61; /* Match theme color for text */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+        .menu-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .menu-item h3 {
+            margin: 10px 0;
+        }
+        .menu-item p {
+            margin: 5px 0;
+        }
+        .menu-item button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu-item button:hover {
+            background-color: #e65b50;
+        }
+        .cart-section {
+            padding: 20px;
+            text-align: center;
+        }
+        .cart-section button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-section button:hover {
+            background-color: #45a049;
+        }
+        .videos h2 {
+            font-size: 24px;
+            color: #ff6f61; /* Match theme color */
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .videos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Add spacing between videos */
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background for contrast */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        .videos iframe {
+            width: 400px; /* Increase video size */
+            height: 225px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+        }
+        .videos iframe:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        .social-links a i {
+            margin-right: 5px;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            position: absolute;
+            top: 20px; /* Ensure space between logo and order bar */
+            left: 20px;
+            height: 100px; /* Increased size for better visibility */
+            width: auto; /* Maintain aspect ratio */
+        }
+        .header-container {
+            position: relative;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #ff6f61;
+            padding: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .cart-total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .remove-item {
+            color: red;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        #cart-items {
+            list-style-type: none; /* Remove dots from the cart list */
+            padding: 0; /* Remove default padding */
+            margin: 0 auto;
+            max-width: 400px; /* Limit width for better alignment */
+            border: 1px solid #ddd; /* Add border */
+            background-color: #f9f9f9; /* Light background */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        #cart-items li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd; /* Add separator between items */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #cart-items li:last-child {
+            border-bottom: none; /* Remove border for the last item */
+        }
+        .remove-item {
+            background-color: #ff6f61; /* Match theme color */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .remove-item:hover {
+            background-color: #e65b50; /* Darker shade on hover */
+        }
+        #cart-total {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #checkout-button, #clear-cart-button {
+            margin: 10px 5px; /* Add spacing between buttons */
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .order-bar {
+            background-color: #ff6f61;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 20px auto 0; /* Add space above and center it */
+            font-size: 16px;
+            font-weight: bold;
+            width: 80%; /* Centered with reduced width */
+            border-radius: 8px; /* Add rounded corners for better aesthetics */
+        }
+        header {
+            position: relative; /* Ensure the header is positioned for absolute child elements */
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <div class="logo">Her Essence Restored (H.E.R.)</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <select id="languageSelector" onchange="changeLanguage(this.value)">
-      <option value="en">English</option>
-      <option value="pt">Português</option>
-      <option value="af">Afrikaans</option>
-    </select>
-  </header>
-
-  <!-- Carousel -->
-  <section class="carousel">
-    <div class="carousel-images">
-      <img src="https://i.pinimg.com/736x/fa/b0/04/fab0048557cd7823baa2e090dfecf675.jpg" alt="Vintage Carousel with Fashion Model">
-      <img src="https://img.freepik.com/free-photo/young-woman-riding-carousel-horse_23-2148321234.jpg" alt="Elegant Woman on Carousel Horse">
-      <img src="https://img.freepik.com/free-photo/attractive-stylish-blonde-woman-jeans-oversize-jacket-walking-against-wall-street_285396-8031.jpg" alt="Chic Lady in Front of Carousel">
-    </div>
-  </section>  
-
-  <!-- Shop Section -->
-  <section class="shop">
-    <h2 style="margin-bottom: 1rem;">Shop Our Collections</h2>
-    <div class="filters">
-        <button onclick="filterProducts('all')">All</button>
-        <button onclick="filterProducts('vintage')">Vintage</button>
-        <button onclick="filterProducts('modern')">Modern</button>
-        <button onclick="filterProducts('african')">African</button>
-        <button onclick="filterProducts('wigs')">Wigs</button> <!-- New Wigs button -->
-      </div>
-      
-      <div class="product-grid" id="productGrid">
-        <!-- Vintage -->
-        <div class="product" data-category="vintage">
-          <img src="https://i.pinimg.com/originals/6f/aa/61/6faa61ce8e5c45c2051cb04a32fc216c.jpg" alt="Vintage Dress">
-          <h4>Classic Vintage Dress</h4>
-          <p>65,000 AOA | 1,500 NAD | 1,600 ZAR</p>
-        </div>
-        <div class="product" data-category="vintage">
-          <img src="https://i.pinimg.com/originals/76/14/57/7614577f92cfb1463e09d77db4dbf222.jpg" alt="Vintage Hat">
-          <h4>Vintage Hat</h4>
-          <p>25,000 AOA | 600 NAD | 650 ZAR</p>
-        </div>
-        <div class="product" data-category="vintage">
-          <img src="https://i.pinimg.com/originals/3a/1c/3c/3a1c3c8447c340efcb5413659f637ac0.jpg" alt="Vintage Trench Coat">
-          <h4>Vintage Trench Coat</h4>
-          <p>82,000 AOA | 2,000 NAD | 2,100 ZAR</p>
-        </div>
-      
-        <!-- Modern -->
-        <div class="product" data-category="modern">
-          <img src="https://img.freepik.com/free-photo/fashion-portrait-young-elegant-woman_1328-2702.jpg" alt="Modern Blazer">
-          <h4>Modern Blazer</h4>
-          <p>90,000 AOA | 2,200 NAD | 2,300 ZAR</p>
-        </div>
-        <div class="product" data-category="modern">
-          <img src="https://img.freepik.com/free-photo/pair-trendy-sneakers_23-2149439237.jpg" alt="Modern Sneakers">
-          <h4>Modern Sneakers</h4>
-          <p>74,000 AOA | 1,800 NAD | 1,900 ZAR</p>
-        </div>
-        <div class="product" data-category="modern">
-          <img src="https://img.freepik.com/free-photo/stylish-handbag-isolated_23-2149439248.jpg" alt="Modern Handbag">
-          <h4>Modern Handbag</h4>
-          <p>57,000 AOA | 1,400 NAD | 1,500 ZAR</p>
-        </div>
-      
-        <!-- African -->
-        <div class="product" data-category="african">
-          <img src="https://i.pinimg.com/originals/c1/b2/60/c1b26073812fd829d7a0ad7cf5b6e8bb.jpg" alt="African Print Wrap">
-          <h4>African Print Wrap</h4>
-          <p>49,000 AOA | 1,200 NAD | 1,300 ZAR</p>
-        </div>
-        <div class="product" data-category="african">
-          <img src="https://i.pinimg.com/originals/9d/90/90/9d9090d52897f0ab2e3ce8e6e8c8b38c.jpg" alt="African Beaded Necklace">
-          <h4>Beaded Necklace</h4>
-          <p>33,000 AOA | 800 NAD | 850 ZAR</p>
-        </div>
-        <div class="product" data-category="african">
-          <img src="https://i.pinimg.com/originals/c4/ba/b3/c4bab388fe0aa742c34ef8c1745a3d66.jpg" alt="African Print Dress">
-          <h4>Bold Print Dress</h4>
-          <p>74,000 AOA | 1,800 NAD | 1,900 ZAR</p>
-        </div>
-
-        <!-- Wigs -->
-        <div class="product" data-category="wigs">
-          <img src="https://example.com/wig1.jpg" alt="Curly Wig">
-          <h4>Curly Wig</h4>
-          <p>40,000 AOA | 1,000 NAD | 1,100 ZAR</p>
-        </div>
-        <div class="product" data-category="wigs">
-          <img src="https://example.com/wig2.jpg" alt="Straight Wig">
-          <h4>Straight Wig</h4>
-          <p>50,000 AOA | 1,200 NAD | 1,300 ZAR</p>
-        </div>
-        <div class="product" data-category="wigs">
-          <img src="https://example.com/wig3.jpg" alt="Braided Wig">
-          <h4>Braided Wig</h4>
-          <p>60,000 AOA | 1,400 NAD | 1,500 ZAR</p>
-        </div>
-      </div>
-      
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-col">
-        <h4>About Us</h4>
-        <p>Her Essence Restored (H.E.R.) brings timeless elegance to modern fashion. Discover curated styles from across the decades.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <a href="https://www.instagram.com" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
-          </svg>
-          Instagram
-        </a>
-        <a href="https://www.facebook.com" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
-          </svg>
-          Facebook
-        </a>
-        <a href="https://www.pinterest.com" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
-          </svg>
-          Pinterest
-        </a>
-        <a href="https://www.tiktok.com" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
-          </svg>
-          TikTok
-        </a>
-      </div>
-      
-      <div class="footer-col newsletter">
-        <h4>Newsletter</h4>
-        <p>Sign up for exclusive updates:</p>
-        <input type="email" placeholder="Your email" />
-        <button>Subscribe</button>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    function filterProducts(category) {
-      const products = document.querySelectorAll('.product');
-      products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) {
-          product.style.display = 'block';
-        } else {
-          product.style.display = 'none';
+    <script>
+        // Check if redirected from checkout
+        if (localStorage.getItem('checkoutSuccess') === 'true') {
+            alert('Thank you for your purchase!');
+            localStorage.removeItem('checkoutSuccess'); // Clear the flag
         }
-      });
-    }
-  </script>
-  <script>
-  const translations = {
-    en: {
-      home: "Home",
-      products: "Products",
-      about: "About",
-      contact: "Contact",
-      shopCollections: "Shop Our Collections",
-      all: "All",
-      vintage: "Vintage",
-      modern: "Modern",
-      african: "African",
-      wigs: "Wigs", // New translation
-      aboutUs: "About Us",
-      followUs: "Follow Us",
-      newsletter: "Newsletter",
-      signUp: "Sign up for exclusive updates:",
-      subscribe: "Subscribe",
-      footer: "&copy; 2025 Her Essence Restored (H.E.R.). All rights reserved."
-    },
-    pt: {
-      home: "Início",
-      products: "Produtos",
-      about: "Sobre",
-      contact: "Contato",
-      shopCollections: "Compre Nossas Coleções",
-      all: "Todos",
-      vintage: "Vintage",
-      modern: "Moderno",
-      african: "Africano",
-      wigs: "Perucas", // New translation
-      aboutUs: "Sobre Nós",
-      followUs: "Siga-nos",
-      newsletter: "Boletim Informativo",
-      signUp: "Inscreva-se para atualizações exclusivas:",
-      subscribe: "Inscrever-se",
-      footer: "&copy; 2025 Her Essence Restored (H.E.R.). Todos os direitos reservados."
-    },
-    af: {
-      home: "Tuis",
-      products: "Produkte",
-      about: "Oor",
-      contact: "Kontak",
-      shopCollections: "Koop Ons Versamelings",
-      all: "Alle",
-      vintage: "Vintage",
-      modern: "Modern",
-      african: "Afrikaans",
-      wigs: "Pruike", // New translation
-      aboutUs: "Oor Ons",
-      followUs: "Volg Ons",
-      newsletter: "Nuusbrief",
-      signUp: "Teken in vir eksklusiewe opdaterings:",
-      subscribe: "Inskryf",
-      footer: "&copy; 2025 Her Essence Restored (H.E.R.). Alle regte voorbehou."
-    }
-  };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Retrieve item count from localStorage
+            const itemCount = localStorage.getItem('itemCount') || 0;
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.textContent = itemCount; // Update cart count in the UI
+            }
 
-  function changeLanguage(language) {
-    document.querySelector('nav a[href="index.html"]').textContent = translations[language].home;
-    document.querySelector('nav a[href="products.html"]').textContent = translations[language].products;
-    document.querySelector('nav a[href="about.html"]').textContent = translations[language].about;
-    document.querySelector('nav a[href="contact.html"]').textContent = translations[language].contact;
-    document.querySelector('.shop h2').textContent = translations[language].shopCollections;
-    document.querySelector('.filters button:nth-child(1)').textContent = translations[language].all;
-    document.querySelector('.filters button:nth-child(2)').textContent = translations[language].vintage;
-    document.querySelector('.filters button:nth-child(3)').textContent = translations[language].modern;
-    document.querySelector('.filters button:nth-child(4)').textContent = translations[language].african;
-    document.querySelector('.filters button:nth-child(5)').textContent = translations[language].wigs; // Update Wigs button text
-    document.querySelector('.footer-col h4').textContent = translations[language].aboutUs;
-    document.querySelector('.footer-col.newsletter h4').textContent = translations[language].newsletter;
-    document.querySelector('.footer-col.newsletter p').textContent = translations[language].signUp;
-    document.querySelector('.footer-col.newsletter button').textContent = translations[language].subscribe;
-    document.querySelector('.footer-bottom').innerHTML = translations[language].footer;
-  }
-</script>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
-</svg>
+            // Retrieve cart data from localStorage
+            const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+            savedCart.forEach(({ item, price }) => cart.push({ item, price }));
+            updateCartDisplay(); // Update the cart display with saved items
+        });
+
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            updateCartDisplay();
+            alert(`${item} has been added to your cart!`);
+
+            // Save updated cart and item count to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('itemCount', cart.length);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+
+            // Save updated cart and item count to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('itemCount', cart.length);
+        }
+    </script>
+    <nav>
+        <a href="#menu">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+    <header class="header-container">
+        <img src="file:///C:/Users/bugsy/Downloads/Naomi's%20website/Logo.jpg" alt="Logo" class="logo">
+        <h1>Charlotte's Heavenly Delights</h1>
+        <p>Delicious food delivered to your doorstep!</p>
+        <div class="cart-icon" onclick="redirectToCheckout()">
+            🛒 <span id="cart-count" class="cart-count">0</span>
+        </div>
+        <p class="order-bar">
+            Place your orders from Monday to Friday, 9:00 AM - 8:00 PM. Closed on Saturdays & Sundays.
+        </p>
+    </header>
+
+    <section id="menu" class="menu">
+        <div class="menu-item">
+            <img src="https://recipes.net/wp-content/uploads/2023/07/sticky-chicken-wings_4ec724a5d7859ddf206347e1ee3e04f6.jpeg" alt="Food Item">
+            <h3>Sticky Chicken Wings</h3>
+            <p>N$60.00</p>
+            <button onclick="addToCart('Sticky Chicken Wings', 60.00)">Order Now</button>
+        </div>
+        <!-- New Food Items -->
+        <div class="menu-item">
+            <img src="https://www.georges.co.za/cdn/shop/files/33_1024x1024.png?v=1694007574" alt="Food Item">
+            <h3>Rissoles</h3>
+            <p>N$50.00</p>
+            <button onclick="addToCart('Rissoles', 50.00)">Order Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://jughandlesfatfarm.com/wp-content/uploads/2022/03/0E2A1651-3.jpg" alt="Food Item">
+            <h3>Seafood Paella</h3>
+            <p>N$80.00</p>
+            <button onclick="addToCart('Seafood Paella', 80.00)">Order Now</button>
+        </div>
+        <div class="menu-item">
+            <img src="https://th.bing.com/th/id/OIP.ZNDCdXB-GkkPh7DwoZJkmwAAAA?rs=1&pid=ImgDetMain" alt="Food Item">
+            <h3>Loaded Fries</h3>
+            <p>N$60.00</p>
+            <button onclick="addToCart('Loaded Fries', 60)">Order Now</button>
+        </div>
+    </section>
+
+    <section id="cart" class="cart-section">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p id="empty-cart-message" style="display: none; color: gray;">Your cart is empty.</p> <!-- Empty cart message -->
+        <p id="cart-total" class="cart-total">Total: $0.00</p>
+        <button id="checkout-button" onclick="redirectToCheckout()" disabled>Checkout</button> <!-- Disable by default -->
+        <button id="clear-cart-button" onclick="clearCart()" style="display: none;">Clear Cart</button> <!-- Hidden by default -->
+    </section>
+
+    <section id="videos" class="videos">
+        <h2>Our Videos</h2>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/L_jWHffIx5E" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <footer id="footer">
+        <p>&copy; 2023 Charlotte's Heavenly Delights. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i>📘</i>Facebook</a>
+            <a href="https://twitter.com" target="_blank"><i>🐦</i>Twitter</a>
+            <a href="https://www.instagram.com/charlottes_heavenly_delights?igsh=cjc4Mjk3OGNlbmd4" target="_blank"><i>📸</i>Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        const cart = [];
+
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            updateCartDisplay();
+            alert(`${item} has been added to your cart!`);
+
+            // Save updated cart and item count to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('itemCount', cart.length);
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const checkoutButton = document.getElementById('checkout-button');
+            const clearCartButton = document.getElementById('clear-cart-button');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block'; // Show empty cart message
+                checkoutButton.disabled = true; // Disable checkout button
+                clearCartButton.style.display = 'none'; // Hide clear cart button
+            } else {
+                emptyCartMessage.style.display = 'none'; // Hide empty cart message
+                checkoutButton.disabled = false; // Enable checkout button
+                clearCartButton.style.display = 'inline-block'; // Show clear cart button
+            }
+
+            cart.forEach(({ item, price }, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${item} - $${price.toFixed(2)}`;
+                const removeBtn = document.createElement('span');
+                removeBtn.textContent = 'Remove';
+                removeBtn.className = 'remove-item';
+                removeBtn.onclick = () => removeFromCart(index);
+                li.appendChild(removeBtn);
+                cartItems.appendChild(li);
+                total += price;
+            });
+
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+            const cartCount = document.getElementById('cart-count');
+            cartCount.textContent = cart.length;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+
+            // Save updated cart and item count to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('itemCount', cart.length);
+        }
+
+        function clearCart() {
+            cart.length = 0; // Clear the cart array
+            updateCartDisplay();
+
+            // Save updated cart and item count to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('itemCount', cart.length);
+        }
+
+        function redirectToCheckout() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'checkout.html';
+        }
+    </script>
 </body>
 </html>

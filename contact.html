@@ -1,328 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us - Her Essence Restored (H.E.R.)</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background-color: #fffaf4;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: #fff;
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      height: 50px;
-      margin-right: 1rem;
-    }
-
-    .logo span {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #b76e79;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-
-    .lang-switch {
-      margin: 1rem 2rem;
-      text-align: right;
-    }
-
-    select {
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .contact-section {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.05);
-    }
-
-    .contact-section h1 {
-      text-align: center;
-      color: #b76e79;
-      margin-bottom: 2rem;
-    }
-
-    form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      margin-top: 1.2rem;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    textarea {
-      min-height: 150px;
-    }
-
-    button {
-      margin-top: 1.5rem;
-      background-color: #b76e79;
-      color: #fff;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .map-container {
-      margin-top: 3rem;
-    }
-
-    iframe {
-      width: 100%;
-      border: none;
-      height: 300px;
-      border-radius: 10px;
-    }
-
-    .contact-details {
-      margin-top: 2rem;
-      font-size: 1rem;
-      color: #444;
-    }
-
-    .contact-details p {
-      margin-bottom: 0.5rem;
-    }
-
-    footer {
-      background-color: #222;
-      color: #eee;
-      padding: 2rem;
-      margin-top: 4rem;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .footer-col {
-      flex: 1;
-      min-width: 200px;
-      margin: 1rem;
-    }
-
-    .footer-col h4 {
-      margin-bottom: 1rem;
-    }
-
-    .footer-col a {
-      display: block;
-      margin: 0.3rem 0;
-      color: #ccc;
-      text-decoration: none;
-    }
-
-    .newsletter input {
-      padding: 0.5rem;
-      width: 70%;
-      margin-right: 0.5rem;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .newsletter button {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: #b76e79;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    .whatsapp-link {
-      margin-top: 1rem;
-      display: inline-block;
-      background-color: #25d366;
-      color: white;
-      padding: 0.6rem 1rem;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Charlotte's Heavenly Delights</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffefd5, #ffe4e1);
+        }
+        .contact-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .contact-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .contact-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-container label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .contact-container input, .contact-container textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .contact-container button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-container button:hover {
+            background-color: #e65b50;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            text-decoration: none;
+            color: #ff6f61;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #e65b50;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background-color: #ffe4e1;
+            border-top: 1px solid #ddd;
+        }
+        nav {
+            background-color: #ff6f61;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: white;
+            color: #ff6f61;
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Her Essence Restored (H.E.R.) Logo" />
-      <span>Her Essence Restored (H.E.R.)</span>
-    </div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html">Cart</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
     </nav>
-  </header>
-
-  <!-- Language Switcher -->
-  <div class="lang-switch">
-    <label for="language">Language:</label>
-    <select id="language" onchange="changeLanguage()">
-      <option value="en">English</option>
-      <option value="pt">Português</option>
-      <option value="af">Afrikaans</option>
-    </select>
-  </div>
-
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <h1 data-lang="en">Contact Us</h1>
-    <h1 data-lang="pt" style="display:none;">Fale Conosco</h1>
-    <h1 data-lang="af" style="display:none;">Kontak Ons</h1>
-
-    <!-- Contact Form via Formspree -->
-    <form action="https://formspree.io/f/mnqekvow" method="POST">
-      <label data-lang="en">Your Name</label>
-      <label data-lang="pt" style="display:none;">Seu Nome</label>
-      <label data-lang="af" style="display:none;">Jou Naam</label>
-      <input type="text" name="name" required />
-
-      <label data-lang="en">Your Email</label>
-      <label data-lang="pt" style="display:none;">Seu Email</label>
-      <label data-lang="af" style="display:none;">Jou E-pos</label>
-      <input type="email" name="email" required />
-
-      <label data-lang="en">Your Message</label>
-      <label data-lang="pt" style="display:none;">Sua Mensagem</label>
-      <label data-lang="af" style="display:none;">Jou Boodskap</label>
-      <textarea name="message" required></textarea>
-
-      <button type="submit" data-lang="en">Send Message</button>
-      <button type="submit" data-lang="pt" style="display:none;">Enviar Mensagem</button>
-      <button type="submit" data-lang="af" style="display:none;">Stuur Boodskap</button>
-    </form>
-
-    <!-- Contact Details -->
-    <div class="contact-details">
-      <p><strong>Phone:</strong> +264 81 234 5678</p>
-      <p><strong>Email:</strong> info@heressencerestored.com</p>
-      <a href="https://wa.me/264812345678" class="whatsapp-link" target="_blank">Chat with us on WhatsApp</a>
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <form onsubmit="showThankYouMessage(event)">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required aria-label="Name">
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required aria-label="Email">
+            
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required aria-label="Message"></textarea>
+            
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" aria-label="Phone Number">
+            
+            <button type="submit">Send Message</button>
+        </form>
+        <p id="thank-you-message" style="display:none; color: green; text-align: center; font-size: 18px; font-weight: bold;">Thank you for contacting us! We will get back to you shortly.</p>
+        <a href="index.html" style="display: block; text-align: center; margin-top: 20px;">Back to Home</a>
+        <div style="margin-top: 30px; text-align: center;">
+            <h2>Our Contact Details</h2>
+            <p>Email: support@charlottesdelights.com</p>
+            <p>Phone: +264 (85) 767-70523</p>
+            <p>Address: Namibia/Walvis Bay</p>
+        </div>
     </div>
-
-    <!-- Google Map -->
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.7377521642835!2d17.070512614800213!3d-22.559722085180225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1c0c5868e13b8ab3%3A0x2a21a5b1ea2212d1!2sWindhoek%2C%20Namibia!5e0!3m2!1sen!2sna!4v1641000000000!5m2!1sen!2sna" 
-        allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-col">
-        <h4>About Us</h4>
-        <p>Her Essence Restored (H.E.R.) brings timeless elegance to African fashion from Namibia, Angola, and Cape Town.</p>
-      </div>
-      <div class="footer-col">
-  <h4>Follow Us</h4>
-  <a href="https://www.instagram.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
-    </svg>
-    Instagram
-  </a>
-  <a href="https://www.facebook.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
-    </svg>
-    Facebook
-  </a>
-  <a href="https://www.pinterest.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
-    </svg>
-    Pinterest
-  </a>
-  <a href="https://www.tiktok.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
-    </svg>
-    TikTok
-  </a>
-</div>
-      <div class="footer-col newsletter">
-        <h4>Newsletter</h4>
-        <p>Sign up for exclusive fashion updates:</p>
-        <input type="email" placeholder="Your email" />
-        <button>Subscribe</button>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2025 Her Essence Restored (H.E.R.). Designed with pride in Namibia, Angola & Cape Town.
-    </div>
-  </footer>
-
-  <!-- Language Script -->
-  <script>
-    function changeLanguage() {
-      const selectedLang = document.getElementById("language").value;
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = el.getAttribute('data-lang') === selectedLang ? 'block' : 'none';
-      });
-    }
-    document.addEventListener("DOMContentLoaded", changeLanguage);
-  </script>
-
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/charlottes_heavenly_delights?igsh=cjc4Mjk3OGNlbmd4" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2023 Charlotte's Heavenly Delights. All rights reserved.</p>
+    </footer>
+    <script>
+        function showThankYouMessage(event) {
+            event.preventDefault();
+            document.getElementById('thank-you-message').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
-
