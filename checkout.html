@@ -12,19 +12,45 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #ffe4e1, #ffefd5);
+            background: linear-gradient(to bottom, #222 0%, #fff 60%, #f8f8f8 100%);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
         header {
-            background-color: #ff6f61;
-            color: white;
-            padding: 20px;
+            background-color: #b7cfc3;
+            color: #222;
+            padding: 40px 20px 24px 20px;
             text-align: center;
             position: relative;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(183, 207, 195, 0.10);
+            border-bottom: 4px solid #e7e7e7;
+        }
+        footer {
+            background-color: #b7cfc3;
+            color: #222;
+            text-align: center;
+            padding: 32px 0 24px 0;
+            margin-top: 40px;
+            border-top: 4px solid #e7e7e7;
+            box-shadow: 0 -2px 12px rgba(183,207,195,0.10);
+        }
+
+        .progress-bar {
+            width: 80%;
+            margin: 20px auto 0 auto;
+            background: #fff3e0;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 18px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+            .progress {
+                height: 100%;
+                background: linear-gradient(90deg, #B7C9B7 60%, #E8D8C3 100%);
+                width: 66%; /* Step 2 of 3 */
+                transition: width 0.4s;
         }
 
         .cart-icon {
@@ -48,6 +74,75 @@
             padding: 20px;
             text-align: center;
         }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(34,34,34,0.12);
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 24px 18px;
+        }
+        .order-item-img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .faq {
+            background: #fffbe7;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .faq h4 {
+            margin-top: 0;
+        }
+        .privacy {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 20px auto;
+            max-width: 600px;
+            font-size: 14px;
+        }
+        .payment-methods {
+            margin: 16px 0;
+        }
+        .payment-methods img {
+            height: 28px;
+            margin: 0 8px;
+            vertical-align: middle;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 400px;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .close-modal {
+            float: right;
+            font-size: 22px;
+            cursor: pointer;
+            color: #ff6f61;
+        }
         .checkout-section ul {
             list-style: none;
             padding: 0;
@@ -56,30 +151,32 @@
             margin: 10px 0;
         }
         .checkout-section button {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                background-color: #B7C9B7;
+                color: #222;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: transform 0.2s, background-color 0.3s;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .checkout-section button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
+                background-color: #A2B6A2;
+                transform: scale(1.05);
         }
         .cancel-button {
-            background-color: #f44336;
+                background-color: #E8D8C3;
+                color: #222;
         }
         .cancel-button:hover {
-            background-color: #d32f2f;
+                background-color: #C9B8A3;
         }
         .back-button {
-            background-color: #ff6f61;
+                background-color: #E8D8C3;
+                color: #222;
         }
         .back-button:hover {
-            background-color: #e65b50;
+                background-color: #C9B8A3;
         }
         .checkout-section button i {
             margin-right: 5px;
@@ -159,29 +256,44 @@
             }
         }
         #delivery-details input {
-            width: 60%; /* Make the input bar smaller */
-            padding: 8px;
+            width: 70%;
+            padding: 10px;
             margin-top: 10px;
             display: block;
             margin-left: auto;
-            margin-right: auto; /* Center the input bar */
-            text-align: center; /* Center the text inside the input */
+            margin-right: auto;
+            text-align: center;
+            border: 2px solid #222;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(34,34,34,0.08);
+            transition: border-color 0.3s;
+        }
+        #delivery-details input:focus {
+            border-color: #c2b280;
+            outline: none;
+            background: #f8f8f8;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header-container">
-        <h1>Checkout</h1>
-        <div class="cart-icon">
-            🛒 <span id="cart-count" class="cart-count">0</span>
+        <img src="Logo.jpg" alt="Charlotte's Heavenly Delights Logo" class="logo" />
+        <h1 id="checkout-title">Checkout</h1>
+        <div class="cart-icon" aria-label="Shopping cart" tabindex="0">
+            🛒 <span id="cart-count" class="cart-count" aria-live="polite">0</span>
+        </div>
+        <div class="progress-bar" aria-label="Checkout Progress">
+            <div class="progress"></div>
         </div>
     </header>
 
-    <section class="checkout-section">
+    <section class="checkout-section card" aria-labelledby="checkout-title">
         <h2>Your Order</h2>
         <ul id="checkout-items"></ul>
         <p id="total-price"></p>
+        <div id="error-message" style="color: red; font-weight: bold; display: none;" role="alert"></div>
         <button class="cancel-button" onclick="cancelOrder()">
             <i class="fas fa-times"></i> Cancel Order
         </button>
@@ -191,35 +303,115 @@
         <button onclick="clearCart()">
             <i class="fas fa-trash"></i> Clear Cart
         </button>
-        <button onclick="redirectToPayment()">Complete Payment</button>
+        <div class="payment-methods">
+            <span>Accepted Payment Methods:</span>
+            <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" title="Visa" />
+            <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="Mastercard" title="Mastercard" />
+            <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal" title="PayPal" />
+        </div>
+        <div style="margin: 16px 0;">
+            <input type="text" id="promo-code" placeholder="Promo code" style="padding:6px; border-radius:4px; border:1px solid #ccc;" />
+            <button onclick="applyPromoCode()" style="margin-left:8px;">Apply</button>
+            <span id="promo-message" style="color:green; font-weight:bold; margin-left:10px;"></span>
+        </div>
+        <button onclick="openReviewModal()" style="background-color:#2196f3; color:white; margin-top:10px;">Review Order</button>
         <div class="loading-spinner" id="loading-spinner" aria-hidden="true"></div>
         <h3>Choose Order Type</h3>
-        <label>
-            <input type="radio" name="order-type" value="takeaway" checked> Take Away
-        </label>
-        <label>
-            <input type="radio" name="order-type" value="delivery"> Delivery
-        </label>
-        <div id="delivery-details" style="display: none; margin-top: 10px;">
-            <input type="text" id="delivery-address" placeholder="Enter delivery address" style="width: 100%; padding: 8px;">
+        <form id="order-type-form" autocomplete="on">
+            <label for="takeaway-radio">
+                <input type="radio" id="takeaway-radio" name="order-type" value="takeaway" checked> Take Away
+            </label>
+            <label for="delivery-radio">
+                <input type="radio" id="delivery-radio" name="order-type" value="delivery"> Delivery
+            </label>
+            <div id="delivery-details" style="display: none; margin-top: 10px;">
+                <label for="recipient-name">Recipient Name</label>
+                <input type="text" id="recipient-name" name="recipient-name" placeholder="Full name" style="width: 100%; padding: 8px;" aria-required="true">
+                <label for="delivery-address">Delivery Address</label>
+                <input type="text" id="delivery-address" name="delivery-address" placeholder="Enter delivery address" style="width: 100%; padding: 8px;" aria-required="true">
+                <label for="delivery-phone">Phone Number</label>
+                <input type="tel" id="delivery-phone" name="delivery-phone" placeholder="Contact number" style="width: 100%; padding: 8px;" aria-required="true">
+                <label for="delivery-instructions">Delivery Instructions (optional)</label>
+                <input type="text" id="delivery-instructions" name="delivery-instructions" placeholder="E.g. gate code, apartment number" style="width: 100%; padding: 8px;">
+                <label for="delivery-time">Preferred Delivery Time (optional)</label>
+                <input type="text" id="delivery-time" name="delivery-time" placeholder="E.g. 18:00" style="width: 100%; padding: 8px;">
+            </div>
+        </form>
+        <div style="margin-top:20px;">
+            <img src="https://img.icons8.com/color/48/000000/secured-letter.png" alt="Secure Payment" title="Secure Payment" style="vertical-align:middle;" />
+            <span style="font-weight:bold; color:#4caf50;">Your payment is protected by SSL encryption</span>
         </div>
+        <div style="margin-top:20px;">
+            <span>Estimated Delivery: <strong id="estimated-delivery">30-45 min</strong></span>
+        </div>
+        <form id="terms-form" style="margin-top:20px;">
+            <input type="checkbox" id="terms-checkbox" required />
+            <label for="terms-checkbox">I agree to the <a href="#" onclick="showTerms();return false;">Terms and Conditions</a></label>
+    <div class="privacy card" id="terms-conditions" style="display:none;">
+        <h3>Terms and Conditions</h3>
+        <ul>
+            <li><strong>Payment:</strong> All payments are processed securely. Orders are confirmed only after payment is received.</li>
+            <li><strong>Refunds:</strong> Refunds are available for cancellations made before order preparation begins. Contact support for assistance.</li>
+            <li><strong>Delivery:</strong> We aim to deliver within the estimated time, but delays may occur due to unforeseen circumstances.</li>
+            <li><strong>Privacy:</strong> Your personal data is protected and used only for order fulfillment. See our Privacy Policy for details.</li>
+            <li><strong>Order Changes:</strong> You may modify or cancel your order before payment. After payment, changes are not guaranteed.</li>
+            <li><strong>Customer Responsibility:</strong> Please provide accurate delivery details and be available for contact during delivery.</li>
+            <li><strong>Limitation of Liability:</strong> We are not liable for delays or issues caused by incorrect information or circumstances beyond our control.</li>
+        </ul>
+        <button onclick="document.getElementById('terms-conditions').style.display='none'" style="margin-top:10px;">Close</button>
+    </div>
+        </form>
+        <button onclick="redirectToPayment()" id="complete-payment-btn">Complete Payment</button>
         <button onclick="sendOrderDetails()">
             <i class="fas fa-envelope"></i> Send Order Details
         </button>
     </section>
+    <div class="modal" id="review-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeReviewModal()">&times;</span>
+            <h3>Review Your Order</h3>
+            <div id="review-content"></div>
+            <button onclick="closeReviewModal()" style="margin-top:10px;">Edit</button>
+            <button onclick="redirectToPayment()" style="background-color:#4caf50; color:white; margin-top:10px;">Confirm & Pay</button>
+        </div>
+    </div>
+    <div class="faq">
+        <h4>Frequently Asked Questions</h4>
+        <ul>
+            <li><strong>How long does delivery take?</strong> Usually 30-45 minutes.</li>
+            <li><strong>What payment methods are accepted?</strong> Visa, Mastercard, PayPal.</li>
+            <li><strong>Can I cancel my order?</strong> Yes, before payment is completed.</li>
+            <li><strong>How do I contact support?</strong> Use the link in the footer or email us.</li>
+        </ul>
+    </div>
+    <div class="privacy" id="privacy-policy" style="display:none;">
+        <strong>Privacy Policy:</strong> We value your privacy. Your data is protected and only used for order processing. We do not share your information with third parties.
+    </div>
 
-    <footer>
+    <footer id="footer">
         <p>&copy; 2023 Charlotte's Heavenly Delights. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://facebook.com" target="_blank">
-                <i class="fab fa-facebook"></i> Facebook
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.405 24 24 23.408 24 22.674V1.326C24 .592 23.405 0 22.675 0"/>
+                </svg>
             </a>
-            <a href="https://twitter.com" target="_blank">
-                <i class="fab fa-twitter"></i> Twitter
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.555-2.005.959-3.127 1.184A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.206-4.92 4.917 0 .386.044.762.127 1.124C7.728 8.82 4.1 6.884 1.671 3.149c-.423.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.212c9.058 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636A10.025 10.025 0 0 0 24 4.557z"/>
+                </svg>
             </a>
-            <a href="https://www.instagram.com/charlottes_heavenly_delights?igsh=cjc4Mjk3OGNlbmd4" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
+            <a href="https://www.instagram.com/charlottes_heavenly_delights?igsh=cjc4Mjk3OGNlbmd4" target="_blank" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.242 1.308 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.242 1.246-3.608 1.308-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.242-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.515 2.497 5.783 2.225 7.149 2.163 8.415 2.105 8.795 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.775.131 4.602.425 3.635 1.392 2.668 2.359 2.374 3.532 2.315 4.809 2.256 6.089 2.243 6.498 2.243 12c0 5.502.013 5.911.072 7.191.059 1.277.353 2.45 1.32 3.417.967.967 2.14 1.261 3.417 1.32 1.28.059 1.689.072 7.191.072s5.911-.013 7.191-.072c1.277-.059 2.45-.353 3.417-1.32.967-.967 1.261-2.14 1.32-3.417.059-1.28.072-1.689.072-7.191s-.013-5.911-.072-7.191c-.059-1.277-.353-2.45-1.32-3.417C19.398.425 18.225.131 16.948.072 15.668.013 15.259 0 12 0zm0 5.838A6.162 6.162 0 0 0 5.838 12 6.162 6.162 0 0 0 12 18.162 6.162 6.162 0 0 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+                </svg>
             </a>
+        </div>
+        <div style="margin-top:10px;">
+            <a href="contact.html" style="color:white; text-decoration:underline;">Contact Customer Support</a>
+        </div>
+        <div style="margin-top:10px;">
+            <span>Phone: <a href="tel:+123456789" style="color:white;">+1 234 567 89</a></span> | <span>Email: <a href="mailto:info@charlottesdelights.com" style="color:white;">info@charlottesdelights.com</a></span>
         </div>
     </footer>
 
@@ -233,12 +425,14 @@
             checkoutItems.innerHTML = '';
             let total = 0;
 
-            cart.forEach(({ item, price, quantity }, index) => {
+            cart.forEach(({ item, price, quantity, img }, index) => {
                 const li = document.createElement('li');
                 li.innerHTML = `
-                    ${item} - N$${price.toFixed(2)} x 
+                    <img src="${img || 'Logo.jpg'}" alt="${item}" class="order-item-img" />
+                    <span>${item}</span> - N$${price.toFixed(2)} x 
                     <input type="number" class="quantity-input" value="${quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
                     = N$${(price * quantity).toFixed(2)}
+                    <button onclick="saveForLater(${index})" style="margin-left:10px;">Save for later</button>
                 `;
                 checkoutItems.appendChild(li);
                 total += price * quantity;
@@ -247,6 +441,51 @@
             totalPrice.textContent = `Total: N$${total.toFixed(2)}`;
             cartCount.textContent = cart.length;
         }
+        function saveForLater(index) {
+            const item = cart.splice(index, 1)[0];
+            let saved = JSON.parse(localStorage.getItem('saved')) || [];
+            saved.push(item);
+            localStorage.setItem('saved', JSON.stringify(saved));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+            showError('Item saved for later!');
+        }
+        function applyPromoCode() {
+            const code = document.getElementById('promo-code').value.trim().toLowerCase();
+            const promoMsg = document.getElementById('promo-message');
+            if (code === 'delight10') {
+                promoMsg.textContent = 'Promo applied: 10% off!';
+                let total = cart.reduce((sum, { price, quantity }) => sum + price * quantity, 0);
+                total = total * 0.9;
+                document.getElementById('total-price').textContent = `Total: N$${total.toFixed(2)}`;
+            } else if (code) {
+                promoMsg.textContent = 'Invalid promo code.';
+            } else {
+                promoMsg.textContent = '';
+            }
+        }
+        function openReviewModal() {
+            const modal = document.getElementById('review-modal');
+            const reviewContent = document.getElementById('review-content');
+            let html = '<ul>';
+            cart.forEach(({ item, price, quantity, img }) => {
+                html += `<li><img src="${img || 'Logo.jpg'}" class="order-item-img" /> ${item} x${quantity} (N$${price.toFixed(2)})</li>`;
+            });
+            html += '</ul>';
+            html += `<p><strong>Total:</strong> ${document.getElementById('total-price').textContent}</p>`;
+            reviewContent.innerHTML = html;
+            modal.style.display = 'flex';
+        }
+        function closeReviewModal() {
+            document.getElementById('review-modal').style.display = 'none';
+        }
+        function showPrivacy() {
+            const policy = document.getElementById('privacy-policy');
+            policy.style.display = policy.style.display === 'none' ? 'block' : 'none';
+        }
+        function showTerms() {
+            document.getElementById('terms-conditions').style.display = 'block';
+        }
 
         function updateQuantity(index, newQuantity) {
             cart[index].quantity = parseInt(newQuantity, 10);
@@ -254,9 +493,20 @@
             displayCart();
         }
 
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => { errorDiv.style.display = 'none'; }, 4000);
+        }
+
         function redirectToPayment() {
             if (cart.length === 0) {
-                alert('Your cart is empty!');
+                showError('Your cart is empty!');
+                return;
+            }
+            if (!document.getElementById('terms-checkbox').checked) {
+                showError('You must agree to the Terms and Conditions.');
                 return;
             }
             document.getElementById('loading-spinner').style.display = 'block';
@@ -298,9 +548,20 @@
         function sendOrderDetails() {
             const orderType = document.querySelector('input[name="order-type"]:checked').value;
             const deliveryAddress = document.getElementById('delivery-address').value;
-            const userEmail = prompt('Please enter your email address for confirmation:');
+            let userEmail = prompt('Please enter your email address for confirmation:');
             if (!userEmail || !userEmail.trim()) {
-                alert('Email address is required for confirmation.');
+                showError('Email address is required for confirmation.');
+                return;
+            }
+            userEmail = userEmail.trim();
+            const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+            if (!emailPattern.test(userEmail)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
+
+            if (orderType === 'delivery' && !deliveryAddress.trim()) {
+                showError('Please enter a delivery address.');
                 return;
             }
 
@@ -311,11 +572,6 @@
                 Total: N$${cart.reduce((total, { price, quantity }) => total + price * quantity, 0).toFixed(2)}
             `;
 
-            if (orderType === 'delivery' && !deliveryAddress.trim()) {
-                alert('Please enter a delivery address.');
-                return;
-            }
-
             // Simulate sending emails
             console.log('Sending to website email...');
             console.log('Email Body:', emailBody);
@@ -324,7 +580,7 @@
             console.log(`To: ${userEmail}`);
             console.log('Email Body:', emailBody);
 
-            alert('Order details have been sent to the website email and a confirmation has been sent to your email!');
+            showError('Order details have been sent to the website email and a confirmation has been sent to your email!');
         }
 
         displayCart();

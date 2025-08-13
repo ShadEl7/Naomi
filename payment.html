@@ -6,52 +6,77 @@
     <title>Payment - Charlotte's Heavenly Delights</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: linear-gradient(to bottom, #f7f7f7, #eaeaea);
+            background: linear-gradient(to bottom, #b7cfc3 0%, #fff 60%, #e7e7e7 100%);
+        }
+        header {
+            background-color: #b7cfc3;
+            color: #222;
+            padding: 32px 20px 18px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(183, 207, 195, 0.10);
+            border-bottom: 4px solid #e7e7e7;
+        }
+        header h1 {
+            margin: 0;
+            color: #222;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            font-family: 'Poppins', Arial, sans-serif;
+            text-shadow: 0 2px 8px rgba(34, 34, 34, 0.08);
         }
         .payment-container {
             text-align: center;
-            padding: 25px;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            width: 90%;
+            padding: 32px 24px 24px 24px;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(183, 207, 195, 0.10);
+            max-width: 420px;
+            width: 95%;
+            margin: 40px auto 0 auto;
         }
         button {
-            background: linear-gradient(to right, #4caf50, #45a049);
-            color: white;
+            background: linear-gradient(to right, #b7cfc3, #ff6f61);
+            color: #222;
             border: none;
-            padding: 12px 20px;
+            padding: 12px 28px;
             border-radius: 25px;
-            font-size: 1em;
+            font-size: 1.1em;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.3s;
-        }
-        button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-        }
-        .payment-options {
-            margin: 15px 0;
-        }
-        .payment-options label {
-            margin-right: 10px;
+            box-shadow: 0 4px 6px rgba(34,34,34,0.08);
+            transition: transform 0.2s, box-shadow 0.3s, background 0.3s, color 0.3s;
             font-weight: bold;
         }
+        button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 12px rgba(34,34,34,0.15);
+            background: linear-gradient(to right, #ff6f61, #b7cfc3);
+            color: #fff;
+        }
+        .payment-options {
+            margin: 18px 0 22px 0;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        .payment-options label {
+            font-weight: bold;
+            font-size: 1.08em;
+            padding: 8px 18px;
+            border-radius: 18px;
+            background: #e7e7e7;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+        .payment-options input[type="radio"] {
+            margin-right: 8px;
+        }
         .payment-options input[type="radio"]:checked + label {
-            background-color: #f0f8ff;
-            border: 1px solid #4caf50;
-            border-radius: 5px;
-            padding: 5px;
+            background: #b7cfc3;
+            color: #ff6f61;
         }
         .card-details {
             display: none;
@@ -153,12 +178,40 @@
                 padding: 12px 40px;
             }
         }
+        #footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+        #footer p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .social-links {
+            margin-top: 10px;
+        }
+        .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+            color: #4caf50;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #45a049;
+        }
     </style>
 </head>
 <body>
-    <main class="payment-container">
+    <header>
         <h1>Payment</h1>
-        <p>Please confirm your payment to complete the order.</p>
+    </header>
+    <main class="payment-container">
+        <p style="font-size:1.15em;color:#333;margin-bottom:18px;">Please confirm your payment to complete the order.</p>
         <div class="payment-options">
             <label>
                 <input type="radio" name="payment-method" value="card" onchange="toggleCardDetails()">
@@ -196,6 +249,8 @@
             &larr; Back to Checkout
         </a>
     </main>
+
+    <!-- Footer removed for a cleaner payment page -->
 
     <script>
         function toggleCardDetails() {

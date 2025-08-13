@@ -6,27 +6,32 @@
     <title>Charlotte's Heavenly Delights</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #ffefd5, #ffe4e1);
+            background: linear-gradient(to bottom, #b7cfc3 0%, #fff 60%, #e7e7e7 100%);
         }
         header {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x300');
-            background-size: cover;
-            color: white;
-            padding: 20px;
+            background-color: #b7cfc3;
+            color: #222;
+            padding: 40px 20px 24px 20px;
             text-align: center;
             position: relative;
+            box-shadow: 0 4px 12px rgba(183, 207, 195, 0.10);
+            border-bottom: 4px solid #e7e7e7;
         }
         header h1 {
             margin: 0;
-            color: #ffefd5; /* Light color for better visibility */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for contrast */
+            color: #222;
+            font-size: 2.7rem;
+            letter-spacing: 2px;
+            font-family: 'Poppins', Arial, sans-serif;
+            text-shadow: 0 2px 8px rgba(34, 34, 34, 0.08);
         }
         header p {
-            color: #ffefd5; /* Light color for better visibility */
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add shadow for contrast */
+            color: #222;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 4px rgba(34, 34, 34, 0.06);
         }
         .cart-icon {
             position: absolute;
@@ -49,24 +54,41 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px 20px 20px;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 2px 12px rgba(183, 207, 195, 0.10);
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+        /* Group food items in 4's horizontally */
+        .menu-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
         }
         .menu-item {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin: 10px;
-            padding: 15px;
+            background: #fff;
+            border: 2px solid #b7cfc3;
+            border-radius: 50px 12px 50px 12px;
+            margin: 0 auto 32px auto;
+            padding: 32px 20px;
             width: 300px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.5s, color 0.5s, box-shadow 0.5s; /* Smooth transition for menu items */
+            box-shadow: 0 4px 16px rgba(183, 207, 195, 0.10);
+            transition: background 0.4s, color 0.4s, box-shadow 0.4s, transform 0.3s;
+            flex: 1 1 220px;
+            max-width: 300px;
+            min-width: 220px;
         }
         .menu-item:hover {
-            background-color: #ffe4e1; /* Light pink background on hover */
-            color: #ff6f61; /* Match theme color for text */
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
-            transform: scale(1.05); /* Slight zoom effect */
+            background: linear-gradient(135deg, #e7e7e7 60%, #b7cfc3 100%);
+            color: #222;
+            box-shadow: 0 8px 32px rgba(183, 207, 195, 0.18);
+            transform: scale(1.04);
         }
         .menu-item img {
             max-width: 100%;
@@ -79,63 +101,110 @@
             margin: 5px 0;
         }
         .menu-item button {
-            background-color: #ff6f61;
-            color: white;
+            background-color: #b7cfc3;
+            color: #222;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 12px 24px;
+            border-radius: 24px;
             cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(183,207,195,0.10);
+            transition: background 0.3s, color 0.3s;
         }
         .menu-item button:hover {
-            background-color: #e65b50;
+            background-color: #e7e7e7;
+            color: #222;
         }
         .cart-section {
-            padding: 20px;
+            padding: 40px 28px;
             text-align: center;
+            background: linear-gradient(120deg, #fff 60%, #b7cfc3 100%);
+            border-radius: 32px;
+            box-shadow: 0 4px 24px rgba(183,207,195,0.18);
+            margin: 48px auto;
+            max-width: 600px;
+            border: 2px solid #b7cfc3;
         }
-        .cart-section button {
-            background-color: #4caf50;
-            color: white;
+        .cart-section h2 {
+            color: #222;
+            font-size: 2rem;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        #cart-items {
+            background: #f7f7f7;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(183,207,195,0.10);
+            margin-bottom: 18px;
+        }
+        #cart-total {
+            color: #ff6f61;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        #checkout-button, #clear-cart-button {
+            background-color: #b7cfc3;
+            color: #222;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 12px 24px;
+            border-radius: 24px;
             cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(183,207,195,0.10);
+            margin: 8px;
+            transition: background 0.3s, color 0.3s;
         }
-        .cart-section button:hover {
-            background-color: #45a049;
+        #checkout-button:hover, #clear-cart-button:hover {
+            background-color: #ff6f61;
+            color: #fff;
         }
         .videos h2 {
-            font-size: 24px;
-            color: #ff6f61; /* Match theme color */
-            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #222; /* Black text */
+            margin-bottom: 28px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
         }
+
         .videos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px; /* Add spacing between videos */
-            padding: 20px;
-            background-color: #f9f9f9; /* Light background for contrast */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            padding: 40px 24px;
+            background: linear-gradient(120deg, #b7cfc3 60%, #fff 100%);
+            border-radius: 32px;
+            box-shadow: 0 4px 24px rgba(183,207,195,0.18);
+            margin: 48px auto;
+            max-width: 1200px;
+            align-items: start;
         }
+
         .videos iframe {
-            width: 400px; /* Increase video size */
-            height: 225px;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+            width: 100%;
+            min-height: 220px;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 6px 18px rgba(34,34,34,0.10);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #b7cfc3;
         }
+
         .videos iframe:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+            transform: scale(1.04);
+            box-shadow: 0 12px 24px rgba(34,34,34,0.18);
         }
         footer {
-            background-color: #333;
-            color: white;
+            background-color: #b7cfc3;
+            color: #222;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+            padding: 32px 0 24px 0;
+            margin-top: 40px;
+            border-top: 4px solid #e7e7e7;
+            box-shadow: 0 -2px 12px rgba(183,207,195,0.10);
         }
         .social-links a {
             color: white;
@@ -163,19 +232,27 @@
         nav {
             position: sticky;
             top: 0;
-            background-color: #ff6f61;
-            padding: 10px;
+            background-color: #e7e7e7;
+            padding: 20px 0;
             text-align: center;
             z-index: 1000;
+            box-shadow: 0 2px 12px rgba(183,207,195,0.10);
         }
         nav a {
-            color: white;
-            margin: 0 15px;
+            color: #222;
+            margin: 0 22px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            border-radius: 24px;
+            padding: 8px 16px;
+            transition: background 0.3s, color 0.3s;
         }
         nav a:hover {
-            text-decoration: underline;
+            background: #b7cfc3;
+            color: #222;
+            text-decoration: none;
         }
         .cart-total {
             font-weight: bold;
@@ -227,6 +304,12 @@
             margin: 10px 5px; /* Add spacing between buttons */
             padding: 10px 20px;
             font-size: 16px;
+            background-color: #c2b280;
+            color: #222;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(34,34,34,0.08);
         }
         .order-bar {
             background-color: #ff6f61;
@@ -241,6 +324,141 @@
         }
         header {
             position: relative; /* Ensure the header is positioned for absolute child elements */
+        }
+        /* Responsive horizontal food groups */
+        .menu-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .menu-item {
+            margin: 0;
+            flex: 1 1 220px;
+            max-width: 300px;
+            min-width: 220px;
+        }
+        @media (max-width: 900px) {
+            .menu-row {
+                gap: 18px;
+            }
+            .menu-item {
+                max-width: 90vw;
+                min-width: 160px;
+            }
+            .menu {
+                padding: 24px 8px;
+            }
+        }
+        @media (max-width: 600px) {
+            .menu-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .menu-item {
+                max-width: 98vw;
+                min-width: 120px;
+                padding: 16px 8px;
+            }
+            .menu {
+                padding: 12px 2px;
+            }
+            .cart-section {
+                padding: 16px 4px;
+            }
+            .videos {
+                padding: 16px 4px;
+            }
+        }
+        .reviews-section {
+            margin: 48px auto 0 auto;
+            max-width: 600px;
+            background: linear-gradient(120deg, #b7cfc3 60%, #fff 100%);
+            border-radius: 32px;
+            box-shadow: 0 4px 24px rgba(183,207,195,0.18);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .reviews-section h2 {
+            color: #222;
+            font-size: 1.7rem;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        #review-form textarea, #review-form input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #b7cfc3;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        #review-form button {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(183,207,195,0.10);
+            transition: background 0.3s, color 0.3s;
+        }
+        #review-form button:hover {
+            background-color: #b7cfc3;
+            color: #222;
+        }
+        .review-list {
+            margin-top: 24px;
+            text-align: left;
+        }
+        .review-item {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(183,207,195,0.10);
+            padding: 16px;
+            margin-bottom: 16px;
+            border-left: 6px solid #b7cfc3;
+            position: relative;
+        }
+        .review-item .review-name {
+            font-weight: bold;
+            color: #ff6f61;
+        }
+        .review-item .review-stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+        .review-item .review-text {
+            margin-top: 6px;
+            color: #222;
+        }
+        .star-rating {
+            direction: rtl;
+            display: inline-flex;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            gap: 2px;
+        }
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+        .star-rating label {
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star-rating input[type="radio"]:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffd700;
         }
     </style>
 </head>
@@ -286,58 +504,74 @@
             localStorage.setItem('itemCount', cart.length);
         }
     </script>
-    <nav>
+    <nav class="main-nav">
         <a href="#menu">Menu</a>
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact Us</a>
-    </nav>
-    <header class="header-container">
-        <img src="file:///C:/Users/bugsy/Downloads/Naomi's%20website/Logo.jpg" alt="Logo" class="logo">
-        <h1>Charlotte's Heavenly Delights</h1>
-        <p>Delicious food delivered to your doorstep!</p>
         <div class="cart-icon" onclick="redirectToCheckout()">
             🛒 <span id="cart-count" class="cart-count">0</span>
         </div>
+    </nav>
+    <header class="header-container">
+        <img src="Logo.jpg" alt="Logo" class="logo">
+        <h1>Charlotte's Heavenly Delights</h1>
+        <p>Delicious food delivered to your doorstep!</p>
         <p class="order-bar">
             Place your orders from Monday to Friday, 9:00 AM - 8:00 PM. Closed on Saturdays & Sundays.
         </p>
     </header>
-
-    <section id="menu" class="menu">
-        <div class="menu-item">
-            <img src="https://recipes.net/wp-content/uploads/2023/07/sticky-chicken-wings_4ec724a5d7859ddf206347e1ee3e04f6.jpeg" alt="Food Item">
-            <h3>Sticky Chicken Wings</h3>
-            <p>N$60.00</p>
-            <button onclick="addToCart('Sticky Chicken Wings', 60.00)">Order Now</button>
-        </div>
-        <!-- New Food Items -->
-        <div class="menu-item">
-            <img src="https://www.georges.co.za/cdn/shop/files/33_1024x1024.png?v=1694007574" alt="Food Item">
-            <h3>Rissoles</h3>
-            <p>N$50.00</p>
-            <button onclick="addToCart('Rissoles', 50.00)">Order Now</button>
-        </div>
-        <div class="menu-item">
-            <img src="https://jughandlesfatfarm.com/wp-content/uploads/2022/03/0E2A1651-3.jpg" alt="Food Item">
-            <h3>Seafood Paella</h3>
-            <p>N$80.00</p>
-            <button onclick="addToCart('Seafood Paella', 80.00)">Order Now</button>
-        </div>
-        <div class="menu-item">
-            <img src="https://th.bing.com/th/id/OIP.ZNDCdXB-GkkPh7DwoZJkmwAAAA?rs=1&pid=ImgDetMain" alt="Food Item">
-            <h3>Loaded Fries</h3>
-            <p>N$60.00</p>
-            <button onclick="addToCart('Loaded Fries', 60)">Order Now</button>
+        <div class="menu-row">
+            <div class="menu-item">
+                <img src="https://recipes.net/wp-content/uploads/2023/07/sticky-chicken-wings_4ec724a5d7859ddf206347e1ee3e04f6.jpeg" alt="Food Item">
+                <h3>Sticky Chicken Wings</h3>
+                <p>N$60.00</p>
+                <button onclick="addToCart('Sticky Chicken Wings', 60.00)">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://www.georges.co.za/cdn/shop/files/33_1024x1024.png?v=1694007574" alt="Food Item">
+                <h3>Rissoles</h3>
+                <p>N$50.00</p>
+                <button onclick="addToCart('Rissoles', 50.00)">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://jughandlesfatfarm.com/wp-content/uploads/2022/03/0E2A1651-3.jpg" alt="Food Item">
+                <h3>Seafood Paella</h3>
+                <p>N$80.00</p>
+                <button onclick="addToCart('Seafood Paella', 80.00)">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="https://th.bing.com/th/id/OIP.ZNDCdXB-GkkPh7DwoZJkmwAAAA?rs=1&pid=ImgDetMain" alt="Food Item">
+                <h3>Loaded Fries</h3>
+                <p>N$60.00</p>
+                <button onclick="addToCart('Loaded Fries', 60)">Order Now</button>
+            </div>
         </div>
     </section>
 
     <section id="cart" class="cart-section">
         <h2>Your Cart</h2>
         <ul id="cart-items"></ul>
-        <p id="empty-cart-message" style="display: none; color: gray;">Your cart is empty.</p> <!-- Empty cart message -->
+        <p id="empty-cart-message" style="display: none; color: gray;">Your cart is empty.</p>
         <p id="cart-total" class="cart-total">Total: $0.00</p>
-        <button id="checkout-button" onclick="redirectToCheckout()" disabled>Checkout</button> <!-- Disable by default -->
-        <button id="clear-cart-button" onclick="clearCart()" style="display: none;">Clear Cart</button> <!-- Hidden by default -->
+        <button id="checkout-button" onclick="redirectToCheckout()" disabled>Checkout</button>
+        <button id="clear-cart-button" onclick="clearCart()" style="display: none;">Clear Cart</button>
+    </section>
+
+    <section class="reviews-section">
+        <h2>Customer Reviews</h2>
+        <form id="review-form">
+            <input type="text" id="review-name" placeholder="Your Name" required>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1" required><label for="star1">&#9733;</label>
+            </div>
+            <textarea id="review-text" rows="3" placeholder="Your Review" required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+        <div class="review-list" id="review-list"></div>
     </section>
 
     <section id="videos" class="videos">
@@ -352,9 +586,21 @@
     <footer id="footer">
         <p>&copy; 2023 Charlotte's Heavenly Delights. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://facebook.com" target="_blank"><i>📘</i>Facebook</a>
-            <a href="https://twitter.com" target="_blank"><i>🐦</i>Twitter</a>
-            <a href="https://www.instagram.com/charlottes_heavenly_delights?igsh=cjc4Mjk3OGNlbmd4" target="_blank"><i>📸</i>Instagram</a>
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.405 24 24 23.408 24 22.674V1.326C24 .592 23.405 0 22.675 0"/>
+                </svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.555-2.005.959-3.127 1.184A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.206-4.92 4.917 0 .386.044.762.127 1.124C7.728 8.82 4.1 6.884 1.671 3.149c-.423.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.212c9.058 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636A10.025 10.025 0 0 0 24 4.557z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/charlottes_heavenly_delights?igsh=cjc4Mjk3OGNlbmd4" target="_blank" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.242 1.308 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.242 1.246-3.608 1.308-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.242-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.515 2.497 5.783 2.225 7.149 2.163 8.415 2.105 8.795 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.775.131 4.602.425 3.635 1.392 2.668 2.359 2.374 3.532 2.315 4.809 2.256 6.089 2.243 6.498 2.243 12c0 5.502.013 5.911.072 7.191.059 1.277.353 2.45 1.32 3.417.967.967 2.14 1.261 3.417 1.32 1.28.059 1.689.072 7.191.072s5.911-.013 7.191-.072c1.277-.059 2.45-.353 3.417-1.32.967-.967 1.261-2.14 1.32-3.417.059-1.28.072-1.689.072-7.191s-.013-5.911-.072-7.191c-.059-1.277-.353-2.45-1.32-3.417C19.398.425 18.225.131 16.948.072 15.668.013 15.259 0 12 0zm0 5.838A6.162 6.162 0 0 0 5.838 12 6.162 6.162 0 0 0 12 18.162 6.162 6.162 0 0 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+                </svg>
+            </a>
         </div>
     </footer>
 
@@ -429,6 +675,40 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'checkout.html';
         }
+
+        // Reviews logic
+        function loadReviews() {
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            const reviewList = document.getElementById('review-list');
+            reviewList.innerHTML = '';
+            if (reviews.length === 0) {
+                reviewList.innerHTML = '<p style="color:gray;">No reviews yet. Be the first!</p>';
+                return;
+            }
+            reviews.forEach(r => {
+                const div = document.createElement('div');
+                div.className = 'review-item';
+                div.innerHTML = `
+                    <span class="review-stars">${'&#9733;'.repeat(r.rating)}${'&#9734;'.repeat(5 - r.rating)}</span>
+                    <span class="review-name">${r.name}</span>
+                    <div class="review-text">${r.text}</div>
+                `;
+                reviewList.appendChild(div);
+            });
+        }
+        document.getElementById('review-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('review-name').value.trim();
+            const text = document.getElementById('review-text').value.trim();
+            const rating = parseInt(document.querySelector('input[name="rating"]:checked')?.value || '0');
+            if (!name || !text || !rating) return;
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            reviews.unshift({ name, text, rating });
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+            document.getElementById('review-form').reset();
+            loadReviews();
+        });
+        window.addEventListener('DOMContentLoaded', loadReviews);
     </script>
 </body>
 </html>
